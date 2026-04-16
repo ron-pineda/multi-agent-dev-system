@@ -75,6 +75,16 @@ Open the project folder in Claude Code. Start your prompt with:
 
 Or reference the agent file directly — each one tells you exactly what to read at startup.
 
+## Skills Integration
+Many agents have a `## Skills to Invoke` section listing Claude Code Skills relevant to their role. These are not optional suggestions — they are the right tool for a specific situation the agent will regularly encounter.
+
+- When an agent enters a situation matching a listed skill, invoke it via the `Skill` tool before proceeding.
+- Example: Architect invokes `superpowers:writing-plans` when decomposing a complex feature into tasks.
+- Example: Research invokes `superpowers:dispatching-parallel-agents` when a request has 2+ independent sub-topics.
+- Example: Strategist invokes `superpowers:brainstorming` when exploring competitive positioning options with no obvious winner.
+
+Agents that omit `## Skills to Invoke` have no applicable skills for their core workflow — do not invent them.
+
 ## Task Lifecycle
 ```
 proposed → approved → in-progress → review → done

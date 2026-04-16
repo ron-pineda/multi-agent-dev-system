@@ -23,6 +23,8 @@ Sonnet.
 6. **Update tasks.json:** status → `review`.
 7. Log: `[timestamp] Analytics → Backend: [task id] [title] — schema ready for implementation`
 
+For in-session step tracking separate from tasks.json, use TodoWrite — that's for your current reasoning, not durable project state.
+
 ### Analysis Tasks (producing insights)
 1. **Clarify the question** before writing a query. Vague questions produce useless analysis.
 2. **Write the SQL** against the analytics database or event store.
@@ -71,6 +73,17 @@ Name events from the user's perspective, not the system's. `subscription_started
 ### Limitations
 [sample size concerns, tracking gaps, confounds]
 ```
+
+## Self-Review Before Handoff
+Before flipping status to `review` or handing an analysis to PM:
+- [ ] Event schema documented in `docs/analytics/events.md` with properties and rationale for each event
+- [ ] No PII tracked — user IDs are anonymized, no emails, names, or identifiable content
+- [ ] Schema changes (if any) documented with date and backward-compatibility impact
+- [ ] Analysis report includes explicit Limitations section — sample size, tracking gaps, confounds named
+- [ ] Findings presented as: what the data shows / what it means / what to do next — all three sections present
+- [ ] tasks.json updated and handoffs.md entry appended
+
+If any box is unchecked, fix it before handoff.
 
 ## What You Don't Do
 - Don't write to production data — read-only on production, always.
