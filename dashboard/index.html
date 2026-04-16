@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <title>Dev Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" id="favicon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%2334d399'/></svg>">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+  <!-- Sticky top nav -->
+  <header id="topNav">
+    <div class="nav-left">
+      <span class="nav-logo">Dev Dashboard</span>
+    </div>
+    <nav class="nav-links">
+      <button class="nav-link active" data-tab="projects">
+        Projects <span id="navProjectCount" class="nav-count" hidden></span>
+      </button>
+      <button class="nav-link" data-tab="team">Team</button>
+      <button class="nav-link" data-tab="timeline">Timeline</button>
+    </nav>
+    <div class="nav-right">
+      <span id="syncStatus" class="sync-status">Synced</span>
+      <button id="cmdKBtn" class="nav-btn" title="Ctrl+K"></button>
+    </div>
+  </header>
+
+  <main id="content">
+
+    <!-- ── Projects Tab ───────────────────────── -->
+    <div class="tab-panel active" data-tab="projects">
+
+      <!-- Focus Recommendation -->
+      <section id="rec-section" class="section" data-empty="true">
+        <div id="recBanner" class="rec-banner"></div>
+      </section>
+
+      <!-- Since Last Visit -->
+      <section id="since-section" class="section">
+        <div id="sinceVisit" class="since-banner"></div>
+      </section>
+
+      <!-- Alerts -->
+      <section id="alerts-section" class="section">
+        <h2 class="section-title">
+          Needs Attention <span id="navAlertCount" class="nav-count" hidden></span>
+        </h2>
+        <div id="alertsList"></div>
+      </section>
+
+      <!-- Action Queue -->
+      <section id="actions-section" class="section">
+        <h2 class="section-title">Your Action Queue</h2>
+        <div id="actionsList"></div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects-section" class="section">
+        <h2 class="section-title">Projects <span id="navProjectCountInline" class="section-count"></span></h2>
+        <div id="projectsGrid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </section>
+
+      <!-- Project Detail -->
+      <section id="project-detail" class="section detail-view" hidden>
+        <button id="backToProjects" class="back-btn">&larr; Back</button>
+        <div id="projectDetailContent"></div>
+      </section>
+
+    </div>
+
+    <!-- ── Team Tab ───────────────────────────── -->
+    <div class="tab-panel" data-tab="team" hidden>
+
+      <section id="team-section" class="section">
+        <h2 class="section-title">Team <span id="teamCount" class="section-count"></span></h2>
+        <div id="teamGrid"></div>
+      </section>
+
+      <section id="agent-detail" class="section detail-view" hidden>
+        <button id="backToTeam" class="back-btn">&larr; Back</button>
+        <div id="agentDetailContent"></div>
+      </section>
+
+    </div>
+
+    <!-- ── Timeline Tab ───────────────────────── -->
+    <div class="tab-panel" data-tab="timeline" hidden>
+
+      <section id="timeline-section" class="section">
+        <h2 class="section-title">Timeline</h2>
+        <div id="timelineList"></div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Command Palette -->
+  <div id="cmdPalette" class="cmd-palette" hidden>
+    <div class="cmd-backdrop"></div>
+    <div class="cmd-dialog">
+      <input id="cmdInput" type="text" placeholder="Search projects, agents, sprints..." autocomplete="off">
+      <div id="cmdResults" class="cmd-results"></div>
+    </div>
+  </div>
+
+  <!-- Start Session modal -->
+  <div id="sessionModal" class="session-modal" hidden>
+    <div class="session-backdrop"></div>
+    <div class="session-dialog">
+      <div class="session-header">
+        <span id="sessionProjectName" class="session-title"></span>
+        <button id="sessionClose" class="session-close">&times;</button>
+      </div>
+      <div id="sessionContent" class="session-content"></div>
+      <div class="session-actions">
+        <button id="sessionCopyBtn" class="session-copy-btn">Copy Briefing &amp; Start</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

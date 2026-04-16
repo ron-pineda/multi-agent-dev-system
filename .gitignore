@@ -1,0 +1,21 @@
+# Claude Code local state
+.claude/
+.superpowers/
+
+# Dashboard runtime artifacts
+dashboard/sc.json
+dashboard/state_check.json
+dashboard/*.log
+
+# Node / editor
+node_modules/
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Secrets
+*.env
+.env.*
+!.env.example

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Team — Usage Guide</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .guide-wrap { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+    .guide-hero { margin-bottom: 40px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 24px; }
+    .guide-hero h1 { color: var(--text-primary); font-size: 28px; margin: 0 0 8px; }
+    .guide-hero p { color: var(--text-muted); font-size: 15px; margin: 0; }
+    .guide-section { margin-bottom: 44px; }
+    .guide-section h2 { color: var(--text-primary); font-size: 18px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 16px; }
+    .guide-section h3 { color: var(--accent); font-size: 14px; margin: 24px 0 6px; }
+    .guide-section p, .guide-section li { color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
+    .guide-section ul { padding-left: 20px; }
+    .flow-diagram { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 16px; background: var(--bg-inset); border-radius: var(--radius-sm); margin: 16px 0; }
+    .flow-node { background: var(--accent-dim); color: var(--accent); padding: 4px 12px; border-radius: var(--radius-badge); font-size: 12px; font-weight: 500; }
+    .flow-arrow { color: var(--text-muted); font-size: 14px; }
+    .dept-block { margin-bottom: 28px; }
+    .dept-label { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
+    .agent-grid-guide { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+    .agent-card-guide { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 14px 16px; }
+    .agent-card-guide h3 { margin: 0 0 4px; color: var(--text-primary); font-size: 13px; font-weight: 600; }
+    .agent-card-guide .model-tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-size: 10px; padding: 1px 8px; border-radius: var(--radius-badge); margin-bottom: 8px; }
+    .agent-card-guide p { margin: 0 0 6px; color: var(--text-secondary); font-size: 12px; line-height: 1.5; }
+    .agent-card-guide .needs-you { color: var(--text-muted); font-size: 11px; font-style: italic; margin: 0; }
+    .scenario { background: var(--bg-inset); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 16px; margin: 12px 0; }
+    .scenario strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 4px; }
+    .scenario p { margin: 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+    td { color: var(--text-secondary); padding: 8px 12px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .back-link { display: inline-block; margin-bottom: 20px; color: var(--text-muted); text-decoration: none; font-size: 12px; }
+    .back-link:hover { color: var(--accent); }
+    .dept-row td:first-child { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; padding-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="guide-wrap">
+    <a href="/" class="back-link">← Back to Dashboard</a>
+
+    <div class="guide-hero">
+      <h1>Agent Team — Usage Guide</h1>
+      <p>You're the founder. You talk to the PM. The PM runs the 28-agent team.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Your Role</h2>
+      <p>You don't manage agents directly. Your job:</p>
+      <ul>
+        <li><strong>Share ideas and goals with PM</strong> — PM translates them into work</li>
+        <li><strong>Approve proposed tasks</strong> in the dashboard — nothing moves without your approval</li>
+        <li><strong>Check the INBOX</strong> — agents flag items that genuinely need your decision</li>
+        <li><strong>Provide direction when blocked</strong> — if a task is stuck, the answer usually lives with you</li>
+      </ul>
+      <p>You don't write briefs, assign engineers, or track handoffs. PM and the rest of the team handle all of that.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>How Work Flows</h2>
+      <p>The core build pipeline — every feature goes through this:</p>
+      <div class="flow-diagram">
+        <span class="flow-node">You</span><span class="flow-arrow">→</span>
+        <span class="flow-node">PM</span><span class="flow-arrow">→</span>
+        <span class="flow-node">Research (if needed)</span><span class="flow-arrow">→</span>
+        <span class="flow-node">Designer (if UI)</span><span class="flow-arrow">→</span>
+        <span class="flow-node">Architect</span><span class="flow-arrow">→</span>
+        <span class="flow-node">Engineers</span><span class="flow-arrow">→</span>
+        <span class="flow-node">QA</span><span class="flow-arrow">→</span>
+        <span class="flow-node">Reviewer</span><span class="flow-arrow">→</span>
+        <span class="flow-node">Done</span>
+      </div>
+      <ol>
+        <li>You tell PM what you want to build</li>
+        <li>If the idea needs investigation, PM hands to <strong>Research</strong> first</li>
+        <li>For UI-heavy features, PM routes to <strong>Designer</strong> for a design spec before planning</li>
+        <li>PM writes a brief and asks Architect to plan it</li>
+        <li>Architect breaks into tasks with acceptance criteria and assigns the right engineers</li>
+        <li>You approve proposed tasks in the dashboard</li>
+        <li>Engineers build — Frontend, Backend, Database, Mobile, AI Engineer, or Integrations as needed</li>
+        <li>QA verifies each task against acceptance criteria</li>
+        <li>Reviewer checks legibility, safety, and standards — marks done</li>
+        <li>Doc Writer updates README, CHANGELOG, and comments</li>
+      </ol>
+      <p>Specialist agents (Security, Performance, Analytics, Growth, etc.) are invoked on demand — not in every pipeline run.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>The Team — 28 Agents</h2>
+      <p>See the Team tab in the dashboard for live status. Full agent definitions are in <code>agents/</code>.</p>
+
+      <div class="dept-block">
+        <div class="dept-label">Build — core engineering</div>
+        <div class="agent-grid-guide">
+          <div class="agent-card-guide">
+            <h3>PM</h3>
+            <div class="model-tag">Sonnet / Haiku</div>
+            <p>Your primary interface. Asks clarifying questions, writes briefs, gates tasks, runs weekly reviews, handles STOP. Every interaction starts here.</p>
+            <p class="needs-you">Needs you for: Kickoff questions, direction changes, INBOX items.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Architect</h3>
+            <div class="model-tag">Opus / Sonnet</div>
+            <p>Breaks features into discrete, independently-buildable tasks. Writes acceptance criteria. Assigns engineers. Records architecture decisions.</p>
+            <p class="needs-you">Needs you for: Rarely — surfaces conflicts to PM who surfaces to you.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Frontend Engineer</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Builds UI: screens, components, interactions, styling. Self-checks before handing to Reviewer.</p>
+            <p class="needs-you">Needs you for: Almost never.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Backend Engineer</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>APIs, business logic, auth, server-side features. Goes to QA before Reviewer.</p>
+            <p class="needs-you">Needs you for: Missing credentials or blocked integrations.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Database Engineer</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Schema changes, migrations, queries, indexes. Never runs production migrations without explicit approval.</p>
+            <p class="needs-you">Needs you for: Production migration runs.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Mobile</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Flutter/Dart, Android/iOS native features. Handles app store build artifacts — hands deployments to DevOps.</p>
+            <p class="needs-you">Needs you for: App store credentials, provisioning profiles.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>AI Engineer</h3>
+            <div class="model-tag">Sonnet / Opus</div>
+            <p>System prompt design, model selection, eval harnesses. Never changes production prompts without running evals.</p>
+            <p class="needs-you">Needs you for: Approving prompt changes in production.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Designer</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Translates vision into buildable design specs. Every output includes exact copy — no placeholders. Feeds directly into Architect planning.</p>
+            <p class="needs-you">Needs you for: Visual direction and brand alignment questions.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Integrations</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Third-party API integrations, webhooks, OAuth flows. Always reads official docs. Webhook signature verification is mandatory.</p>
+            <p class="needs-you">Needs you for: API credentials and third-party account access.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-block">
+        <div class="dept-label">Quality — correctness &amp; safety</div>
+        <div class="agent-grid-guide">
+          <div class="agent-card-guide">
+            <h3>QA</h3>
+            <div class="model-tag">Haiku / Sonnet</div>
+            <p>Verifies every task against acceptance criteria. Binary pass/fail — no grey zone. Routes to Reviewer or back to Architect with specific reasons.</p>
+            <p class="needs-you">Needs you for: Never directly.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Reviewer</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Final gate: code legibility, safety, standards. Approves → done, or requests rework with specific feedback.</p>
+            <p class="needs-you">Needs you for: Never directly.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Doc Writer</h3>
+            <div class="model-tag">Haiku</div>
+            <p>README updates, inline comments, CHANGELOG entries. Only documents what actually exists.</p>
+            <p class="needs-you">Needs you for: Never directly.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Security</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Threat modeling, OWASP audits, RLS reviews. Produces severity-rated reports. Never modifies code — findings become Architect tasks.</p>
+            <p class="needs-you">Needs you for: Deciding which severity findings to prioritize.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Performance</h3>
+            <div class="model-tag">Haiku / Sonnet</div>
+            <p>Profiling, bottleneck analysis, optimization plans. Baseline-first discipline — never recommends optimization without measuring.</p>
+            <p class="needs-you">Needs you for: Rarely — findings route through Architect.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-block">
+        <div class="dept-label">Operations — keeping the lights on</div>
+        <div class="agent-grid-guide">
+          <div class="agent-card-guide">
+            <h3>DevOps</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>CI/CD pipelines, deployments, environment management, app store submissions. Never deploys to production without explicit human sign-off.</p>
+            <p class="needs-you">Needs you for: Every production deployment.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>SRE</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Monitoring setup, incident response, runbooks, post-mortems. On-call escalation paths. Never touches production without instruction.</p>
+            <p class="needs-you">Needs you for: Incident calls, production changes.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Analytics</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Event tracking schema, usage reports, funnel analysis. Server-side events preferred. Read-only on production data.</p>
+            <p class="needs-you">Needs you for: PII tracking decisions.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Finance</h3>
+            <div class="model-tag">Haiku / Sonnet</div>
+            <p>Unit economics, API cost modeling, revenue projections. Every estimate shows three scenarios (optimistic, base, conservative). Assumptions are explicit.</p>
+            <p class="needs-you">Needs you for: Actual revenue/cost numbers to work with.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Legal</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Privacy policy, ToS, GDPR/CCPA, app store compliance checklists. Always flags when the situation needs real legal counsel.</p>
+            <p class="needs-you">Needs you for: Final sign-off before publishing policies.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Chief of Staff</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Weekly portfolio briefing across all projects: what shipped, what's stuck, what decisions are pending. Ask when you want the full picture fast.</p>
+            <p class="needs-you">Needs you for: Access to answer "Decisions Needed" items it surfaces.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-block">
+        <div class="dept-label">Growth — finding users</div>
+        <div class="agent-grid-guide">
+          <div class="agent-card-guide">
+            <h3>Growth</h3>
+            <div class="model-tag">Haiku / Sonnet</div>
+            <p>App Store Optimization, SEO audits, launch strategy. Data-driven — every recommendation has a measurable outcome and a next action.</p>
+            <p class="needs-you">Needs you for: Approving launch plans before anything ships.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Brand</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Brand guide (positioning, personality, voice, colors, typography). Consistency review flags drift. Run once early; update when direction changes.</p>
+            <p class="needs-you">Needs you for: Core positioning and personality decisions.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Copywriter</h3>
+            <div class="model-tag">Haiku / Sonnet</div>
+            <p>Every word users read: landing pages, onboarding, CTAs, error messages, app store listings, email sequences. Shorter is almost always better.</p>
+            <p class="needs-you">Needs you for: Copy approval before shipping.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Content</h3>
+            <div class="model-tag">Haiku / Sonnet</div>
+            <p>Content strategy, build-in-public threads, Product Hunt launches, newsletters. Consistency over bursts. Never publishes without explicit approval.</p>
+            <p class="needs-you">Needs you for: Approving every piece before it goes out.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Customer Success</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Feedback triage (Bug / Feature / Confusion / Positive), pilot health checks, support templates. Surfaces patterns — never promises features or timelines.</p>
+            <p class="needs-you">Needs you for: Acting on escalated feedback and pilot check-in calls.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-block">
+        <div class="dept-label">Business — strategy &amp; revenue</div>
+        <div class="agent-grid-guide">
+          <div class="agent-card-guide">
+            <h3>Strategist</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Pricing analysis, competitive positioning (one-sentence output), GTM planning. Every output includes "What This Assumes" — so you know what it's built on.</p>
+            <p class="needs-you">Needs you for: Final decisions on pricing and go-to-market direction.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Research</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Pre-brief investigation: technical feasibility, market landscape, competitor analysis, build-vs-buy. Hands findings back to PM — never makes the final call.</p>
+            <p class="needs-you">Needs you for: The decision after the research is in.</p>
+          </div>
+          <div class="agent-card-guide">
+            <h3>Sales</h3>
+            <div class="model-tag">Sonnet</div>
+            <p>Prospect research, cold outreach drafts (5-sentence max), pitch materials, 3-touch follow-up sequences. Never contacts anyone without per-message human approval.</p>
+            <p class="needs-you">Needs you for: Approving every outreach message before it sends.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <h2>Common Scenarios</h2>
+
+      <div class="scenario">
+        <strong>"I have a new feature idea"</strong>
+        <p>Tell PM. PM may route to Research first if the idea needs investigation, then to Designer if it's UI-heavy, then to Architect to plan it. You'll see proposed tasks in the dashboard to approve.</p>
+      </div>
+      <div class="scenario">
+        <strong>"I want to know if my idea is viable before building"</strong>
+        <p>Tell PM to run a Research sprint first. Research produces a findings doc in <code>docs/research/</code> with competitive landscape, technical feasibility, and risks. PM then decides whether to proceed.</p>
+      </div>
+      <div class="scenario">
+        <strong>"I want to launch on Product Hunt / grow the user base"</strong>
+        <p>Tell PM. PM routes to Growth for ASO/SEO/launch planning, Copywriter for copy, and Content for the post-launch content calendar. All plans come back to you for approval before anything ships.</p>
+      </div>
+      <div class="scenario">
+        <strong>"I need to understand our pricing / unit economics"</strong>
+        <p>Ask PM to run a Finance + Strategist analysis. Finance handles the numbers (unit economics, cost model, revenue scenarios), Strategist handles the positioning and GTM implications.</p>
+      </div>
+      <div class="scenario">
+        <strong>"Something looks wrong / I want to stop work"</strong>
+        <p>Click <strong>STOP</strong> on the project card. This abandons all in-progress tasks and asks PM for new direction.</p>
+      </div>
+      <div class="scenario">
+        <strong>"I want to change direction mid-build"</strong>
+        <p>Tell PM. PM will invoke STOP on the relevant tasks, then re-brief Architect with the new direction.</p>
+      </div>
+      <div class="scenario">
+        <strong>"A task has been sitting there for days"</strong>
+        <p>Check the task — it may be blocked. Look at the blockers field. The answer is usually a decision or credential only you can provide. Leave a comment or respond to the INBOX item.</p>
+      </div>
+      <div class="scenario">
+        <strong>"I want to see what everyone is working on"</strong>
+        <p>Go to the <strong>Team</strong> tab — shows all 28 agents with current assignments. Go to the <strong>Activity</strong> tab for the full chronological handoff log.</p>
+      </div>
+      <div class="scenario">
+        <strong>"I want a weekly status across all projects"</strong>
+        <p>Ask Chief of Staff for the weekly briefing. It reads all projects simultaneously and delivers: what shipped, what's stuck, what decisions are pending, and what to focus on.</p>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <h2>Dashboard Actions</h2>
+      <table>
+        <thead><tr><th>Button</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Approve</strong></td><td>Moves a proposed task to approved. Architect assigns it to an engineer.</td></tr>
+          <tr><td><strong>Pause</strong></td><td>Freezes a project. No new work starts.</td></tr>
+          <tr><td><strong>Resume</strong></td><td>Unfreezes a paused project.</td></tr>
+          <tr><td><strong>STOP</strong></td><td>Immediately abandons all in-progress tasks. Use for direction changes or emergencies.</td></tr>
+          <tr><td><strong>Comment</strong></td><td>Leaves a note on a task visible to the assigned agent.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="guide-section">
+      <h2>Quick Reference</h2>
+      <table>
+        <thead><tr><th>Dept</th><th>Agent</th><th>Primary Job</th><th>Model</th></tr></thead>
+        <tbody>
+          <tr class="dept-row"><td>Build</td><td></td><td></td><td></td></tr>
+          <tr><td></td><td>PM</td><td>Human interface, task gating, weekly reviews</td><td>Sonnet/Haiku</td></tr>
+          <tr><td></td><td>Architect</td><td>Feature breakdown, task creation, coordination</td><td>Opus/Sonnet</td></tr>
+          <tr><td></td><td>Frontend Engineer</td><td>UI, components, styling</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Backend Engineer</td><td>APIs, business logic, auth</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Database Engineer</td><td>Schema, migrations, queries</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Mobile</td><td>Flutter/Dart, Android/iOS</td><td>Sonnet</td></tr>
+          <tr><td></td><td>AI Engineer</td><td>System prompts, model selection, evals</td><td>Sonnet/Opus</td></tr>
+          <tr><td></td><td>Designer</td><td>Design specs, wireframes, copy specs</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Integrations</td><td>Third-party APIs, webhooks</td><td>Sonnet</td></tr>
+          <tr class="dept-row"><td>Quality</td><td></td><td></td><td></td></tr>
+          <tr><td></td><td>QA</td><td>Acceptance criteria verification</td><td>Haiku/Sonnet</td></tr>
+          <tr><td></td><td>Reviewer</td><td>Code legibility, safety, final gate</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Doc Writer</td><td>README, comments, CHANGELOG</td><td>Haiku</td></tr>
+          <tr><td></td><td>Security</td><td>Threat modeling, OWASP audits</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Performance</td><td>Profiling, bottleneck analysis</td><td>Haiku/Sonnet</td></tr>
+          <tr class="dept-row"><td>Operations</td><td></td><td></td><td></td></tr>
+          <tr><td></td><td>DevOps</td><td>CI/CD, deployments, app store submissions</td><td>Sonnet</td></tr>
+          <tr><td></td><td>SRE</td><td>Monitoring, incident response, runbooks</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Analytics</td><td>Event tracking, usage reports</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Finance</td><td>Unit economics, cost modeling, projections</td><td>Haiku/Sonnet</td></tr>
+          <tr><td></td><td>Legal</td><td>Privacy, ToS, GDPR/CCPA compliance</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Chief of Staff</td><td>Weekly portfolio briefing, cross-project visibility</td><td>Sonnet</td></tr>
+          <tr class="dept-row"><td>Growth</td><td></td><td></td><td></td></tr>
+          <tr><td></td><td>Growth</td><td>ASO, SEO, launch strategy</td><td>Haiku/Sonnet</td></tr>
+          <tr><td></td><td>Brand</td><td>Brand guide, visual identity, voice</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Copywriter</td><td>Landing pages, onboarding, email, store listings</td><td>Haiku/Sonnet</td></tr>
+          <tr><td></td><td>Content</td><td>Content strategy, build-in-public, newsletters</td><td>Haiku/Sonnet</td></tr>
+          <tr><td></td><td>Customer Success</td><td>Feedback triage, pilot health, support templates</td><td>Sonnet</td></tr>
+          <tr class="dept-row"><td>Business</td><td></td><td></td><td></td></tr>
+          <tr><td></td><td>Strategist</td><td>Pricing analysis, competitive positioning, GTM</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Research</td><td>Pre-brief investigation, feasibility, landscape</td><td>Sonnet</td></tr>
+          <tr><td></td><td>Sales</td><td>Prospect research, outreach drafts, pitch materials</td><td>Sonnet</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
