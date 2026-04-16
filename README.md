@@ -30,6 +30,84 @@ RETROS.md       # Short retros after ships or stumbles
 - **Projects are independent.** Each project has its own `CLAUDE.md` declaring
   which agents are active for it.
 
+## The roster
+
+28 agents across 5 departments. Nothing runs until you invoke it. See
+`agents/_index.md` for the canonical source, or each `agents/<Name>.md` for
+the full role prompt.
+
+### Build — the core engineering team
+
+| Agent | File | Model | Primary job |
+|-------|------|-------|-------------|
+| PM | `PM.md` | Sonnet / Haiku | Human interface, task gating, kickoff, weekly reviews |
+| Architect | `Architect.md` | Opus / Sonnet | Feature breakdown, task creation, handoff coordination |
+| Frontend Engineer | `Frontend.md` | Sonnet | UI, screens, components, styling |
+| Backend Engineer | `Backend.md` | Sonnet | APIs, business logic, auth, integrations |
+| Database Engineer | `Database.md` | Sonnet | Schema, migrations, queries |
+| Mobile | `Mobile.md` | Sonnet | Flutter/Dart, Android/iOS native features |
+| AI Engineer | `AIEngineer.md` | Sonnet / Opus | System prompts, model selection, eval harnesses |
+| Designer | `Designer.md` | Sonnet | Design specs, wireframes, component specs |
+| Integrations | `Integrations.md` | Sonnet | Third-party APIs, webhooks, auth flows |
+
+### Quality — ensures what ships is correct, safe, and understandable
+
+| Agent | File | Model | Primary job |
+|-------|------|-------|-------------|
+| QA | `QA.md` | Haiku / Sonnet | Acceptance criteria verification |
+| Reviewer | `Reviewer.md` | Sonnet | Code legibility, safety, final gate |
+| Doc Writer | `DocWriter.md` | Haiku | README, comments, changelog, glossary |
+| Security | `Security.md` | Sonnet | Threat modeling, OWASP audits, pen testing |
+| Performance | `Performance.md` | Haiku / Sonnet | Profiling, bottleneck analysis, optimization |
+
+### Operations — keeps things running and the business healthy
+
+| Agent | File | Model | Primary job |
+|-------|------|-------|-------------|
+| DevOps | `DevOps.md` | Sonnet | CI/CD, deployments, env management, app store submissions |
+| SRE | `SRE.md` | Sonnet | Monitoring, incident response, runbooks |
+| Analytics | `Analytics.md` | Sonnet | Event tracking, schema design, usage reports |
+| Finance | `Finance.md` | Haiku / Sonnet | Unit economics, API cost modeling, revenue projections |
+| Legal | `Legal.md` | Sonnet | Privacy policy, ToS, GDPR/CCPA, app store compliance |
+| Chief of Staff | `ChiefOfStaff.md` | Sonnet | Weekly portfolio briefing, cross-project visibility |
+
+### Growth — acquires users, builds the brand, and converts
+
+| Agent | File | Model | Primary job |
+|-------|------|-------|-------------|
+| Growth | `Growth.md` | Haiku / Sonnet | ASO, SEO, Product Hunt launches |
+| Brand | `Brand.md` | Sonnet | Brand guide, visual identity, consistency review |
+| Copywriter | `Copywriter.md` | Haiku / Sonnet | Landing pages, onboarding, app store listings, email |
+| Content | `Content.md` | Haiku / Sonnet | Content strategy, build-in-public, newsletters |
+| Customer Success | `CustomerSuccess.md` | Sonnet | Feedback triage, pilot health, support templates |
+
+### Business — strategy, revenue, and go-to-market
+
+| Agent | File | Model | Primary job |
+|-------|------|-------|-------------|
+| Strategist | `Strategist.md` | Sonnet | Pricing analysis, competitive positioning, GTM planning |
+| Research | `Research.md` | Sonnet | Pre-brief investigation, technical feasibility, landscape analysis |
+| Sales | `Sales.md` | Sonnet | Prospect research, outreach drafts, pitch materials |
+
+### Invoking an agent
+
+Open the project folder in Claude Code. Start your prompt with:
+
+> "You are the [Agent Name]. Read `agents/[Agent].md` and the project startup files. Here is your task: …"
+
+Or just reference the agent file directly — each one tells you exactly what
+to read at startup.
+
+### Task lifecycle
+
+```
+proposed → approved → in-progress → review → done
+                                   ↓
+                              needs-rework → in-progress (same engineer)
+```
+
+Fast lane (typos, copy, minor styling): `proposed → approved (auto) → in-progress → review (light) → done`
+
 ## Getting started
 
 1. Clone this repo to your workspace.
